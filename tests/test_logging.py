@@ -2,7 +2,7 @@ import json
 
 import structlog
 
-from log import configure_logging
+from mcp_core.logging import configure_logging
 
 
 def test_configure_logging_emits_json_with_service_field(capsys):

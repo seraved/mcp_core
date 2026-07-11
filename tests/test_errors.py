@@ -1,4 +1,4 @@
-from errors import (
+from mcp_core.errors import (
     MCPError,
     ConfigurationError,
     SecretError,

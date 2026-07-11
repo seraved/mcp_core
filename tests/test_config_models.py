@@ -1,6 +1,6 @@
 import os
 
-from config.models import AppConfig, BaseConnectionConfig, CoreSettings
+from mcp_core.config.models import AppConfig, BaseConnectionConfig, CoreSettings
 
 
 class DummyConnectionConfig(BaseConnectionConfig):

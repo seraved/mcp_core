@@ -2,8 +2,8 @@ import asyncio
 
 import pytest
 
-from config.models import BaseConnectionConfig
-from config.reload import watch_config
+from mcp_core.config.models import BaseConnectionConfig
+from mcp_core.config.reload import watch_config
 
 
 class HostConfig(BaseConnectionConfig):

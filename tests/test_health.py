@@ -1,6 +1,6 @@
 import pytest
 
-from health import HealthAggregator
+from mcp_core.health import HealthAggregator
 
 
 class OkCheck:

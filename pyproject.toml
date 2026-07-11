@@ -3,11 +3,7 @@ name = "mcp-core"
 version = "0.1.0"
 description = "Shared scaffolding for MCP servers: config, errors, audit, logging, health, plugins."
 authors = []
-packages = [
-    { include = "cli", from = "src" },
-    { include = "config", from = "src" },
-    { include = "*.py", from = "src" },
-]
+packages = [{ include = "mcp_core", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"

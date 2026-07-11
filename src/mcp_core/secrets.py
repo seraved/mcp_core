@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 from collections.abc import Mapping
 
-from errors import MissingEnvError
+from .errors import MissingEnvError
 
 
 class EnvSecretResolver:

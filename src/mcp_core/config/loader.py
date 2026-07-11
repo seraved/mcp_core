@@ -7,7 +7,7 @@ import os
 import yaml
 from pydantic import BaseModel
 
-from errors import MissingEnvError
+from ..errors import MissingEnvError
 from .models import AppConfig, BaseConnectionConfig
 
 TConn = TypeVar("TConn", bound=BaseConnectionConfig)

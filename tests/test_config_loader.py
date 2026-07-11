@@ -1,9 +1,9 @@
 import pytest
 from pydantic import BaseModel
 
-from config.loader import load_config
-from config.models import BaseConnectionConfig
-from errors import MissingEnvError
+from mcp_core.config.loader import load_config
+from mcp_core.config.models import BaseConnectionConfig
+from mcp_core.errors import MissingEnvError
 
 
 class AuthConfig(BaseModel):

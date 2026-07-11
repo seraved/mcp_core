@@ -1,6 +1,6 @@
 import pytest
 
-from application import MCPApplication
+from mcp_core.application import MCPApplication
 
 
 class DummyPlugin:

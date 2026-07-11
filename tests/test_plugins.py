@@ -1,4 +1,4 @@
-from plugins import Plugin
+from mcp_core.plugins import Plugin
 
 
 class DummyPlugin:

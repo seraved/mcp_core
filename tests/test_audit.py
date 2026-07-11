@@ -1,6 +1,6 @@
 import json
 
-from audit import AuditLogger
+from mcp_core.audit import AuditLogger
 
 
 def test_log_writes_jsonl_with_base_fields(tmp_path):

@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from mcp.server.fastmcp import FastMCP
 
-from health import HealthAggregator
-from plugins import Plugin
+from .health import HealthAggregator
+from .plugins import Plugin
 
 
 class MCPApplication:

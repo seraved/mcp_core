@@ -1,8 +1,8 @@
 import pytest
 from pydantic import BaseModel
 
-from cli.connection_manager import ConnectionManagerCLI
-from config.models import BaseConnectionConfig
+from mcp_core.cli.connection_manager import ConnectionManagerCLI
+from mcp_core.config.models import BaseConnectionConfig
 
 
 class AuthConfig(BaseModel):
@@ -112,7 +112,7 @@ from typing import Literal, Union
 
 from pydantic import BaseModel
 
-from cli.connection_manager import discriminator_field_name
+from mcp_core.cli.connection_manager import discriminator_field_name
 
 
 class KeyAuth(BaseModel):

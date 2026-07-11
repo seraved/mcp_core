@@ -1,7 +1,7 @@
 import pytest
 
-from errors import MissingEnvError
-from secret_resolver import EnvSecretResolver
+from mcp_core.errors import MissingEnvError
+from mcp_core.secrets import EnvSecretResolver
 
 
 def test_get_returns_env_value(monkeypatch):
