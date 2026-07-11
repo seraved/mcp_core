@@ -46,3 +46,8 @@ async def test_health_aggregator_accessible_and_registrable():
     result = await app.health.run()
 
     assert result["status"] == "ok"
+
+
+def test_constructor_forwards_fastmcp_kwargs():
+    app = MCPApplication(name="test-app", host="0.0.0.0")
+    assert app.mcp.settings.host == "0.0.0.0"

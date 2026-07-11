@@ -7,9 +7,9 @@ from .plugins import Plugin
 
 
 class MCPApplication:
-    def __init__(self, name: str):
+    def __init__(self, name: str, **fastmcp_kwargs):
         self.name = name
-        self.mcp = FastMCP(name)
+        self.mcp = FastMCP(name, **fastmcp_kwargs)
         self.health = HealthAggregator()
         self.plugins: dict[str, Plugin] = {}
         self.registered_tools: list[str] = []
