@@ -8,21 +8,24 @@ import yaml
 from pydantic import BaseModel
 
 from ..errors import MissingEnvError
-from .models import AppConfig, BaseConnectionConfig
+from .models import AppConfig, BaseConnectionConfig, CoreSettings
 
 TConn = TypeVar("TConn", bound=BaseConnectionConfig)
+TSettings = TypeVar("TSettings", bound=CoreSettings)
 
 
 def load_config(
     path: str,
     connection_model: type[TConn],
+    settings_model: type[TSettings] = CoreSettings,
     env: Mapping[str, str] | None = None,
-) -> AppConfig[TConn]:
+) -> AppConfig[TConn, TSettings]:
     if env is None:
         env = os.environ
     with open(path, "r", encoding="utf-8") as fh:
         raw = yaml.safe_load(fh) or {}
-    config = AppConfig[connection_model].model_validate(raw)
+    raw.setdefault("settings", {})
+    config = AppConfig[connection_model, settings_model].model_validate(raw)
     _check_env_refs(config, env)
     return config
 

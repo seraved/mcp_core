@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -18,8 +18,9 @@ class CoreSettings(BaseSettings):
 
 
 TConn = TypeVar("TConn", bound=BaseConnectionConfig)
+TSettings = TypeVar("TSettings", bound=CoreSettings)
 
 
-class AppConfig(BaseModel, Generic[TConn]):
+class AppConfig(BaseModel, Generic[TConn, TSettings]):
     connections: dict[str, TConn]
-    settings: CoreSettings = Field(default_factory=CoreSettings)
+    settings: TSettings

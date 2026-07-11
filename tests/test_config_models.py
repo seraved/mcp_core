@@ -30,7 +30,7 @@ def test_app_config_generic_over_connection_type():
         "connections": {"server1": {"host": "example.com", "port": 2222}},
         "settings": {},
     }
-    config = AppConfig[DummyConnectionConfig].model_validate(raw)
+    config = AppConfig[DummyConnectionConfig, CoreSettings].model_validate(raw)
     assert config.connections["server1"].host == "example.com"
     assert config.connections["server1"].port == 2222
     assert isinstance(config.settings, CoreSettings)

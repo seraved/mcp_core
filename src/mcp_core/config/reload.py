@@ -6,9 +6,10 @@ from pathlib import Path
 from typing import TypeVar
 
 from .loader import load_config
-from .models import AppConfig, BaseConnectionConfig
+from .models import AppConfig, BaseConnectionConfig, CoreSettings
 
 TConn = TypeVar("TConn", bound=BaseConnectionConfig)
+TSettings = TypeVar("TSettings", bound=CoreSettings)
 
 OnReload = Callable[[set[str], set[str], "AppConfig"], Awaitable[None]]
 
@@ -17,11 +18,14 @@ async def watch_config(
     path: str,
     connection_model: type[TConn],
     on_reload: OnReload,
+    settings_model: type[TSettings] = CoreSettings,
     poll_interval: float = 5.0,
     env: Mapping[str, str] | None = None,
 ) -> None:
     last_mtime = Path(path).stat().st_mtime
-    known_keys: set[str] = set(load_config(path, connection_model, env).connections.keys())
+    known_keys: set[str] = set(
+        load_config(path, connection_model, settings_model=settings_model, env=env).connections.keys()
+    )
 
     while True:
         await asyncio.sleep(poll_interval)
@@ -30,7 +34,7 @@ async def watch_config(
             continue
         last_mtime = current_mtime
 
-        new_config = load_config(path, connection_model, env)
+        new_config = load_config(path, connection_model, settings_model=settings_model, env=env)
         new_keys = set(new_config.connections.keys())
         added = new_keys - known_keys
         removed = known_keys - new_keys
